@@ -91,6 +91,7 @@ public class LoginActivity extends DaggerAppCompatActivity {
                     helperRegistry.makeToast(this,loginResponse.getErrorDescription());
                 }else{
                     pref.saveUser(this, loginResponse);
+                    coordinator.launchMainActivity(this);
                 }
             });
         }

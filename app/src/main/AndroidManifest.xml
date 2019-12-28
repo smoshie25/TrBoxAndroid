@@ -26,7 +26,8 @@
         <activity
             android:name=".ui.auth.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.main.MainActivity"></activity>
+        <activity android:name=".ui.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

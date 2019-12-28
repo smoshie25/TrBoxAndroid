@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.mosh.trbox.ui.auth.LoginActivity;
 import com.mosh.trbox.ui.auth.SignUpActivity;
+import com.mosh.trbox.ui.main.MainActivity;
 
 import javax.inject.Inject;
 
@@ -27,6 +28,13 @@ public class AppCoordinator {
 
     public void launchLoginActivity(Context context){
         Intent intent = new Intent(context, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+
+    public void launchMainActivity(Context context){
+        Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }

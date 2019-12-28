@@ -6,6 +6,7 @@ import com.mosh.trbox.di.auth.AuthModule;
 import com.mosh.trbox.di.auth.AuthViewModelModule;
 import com.mosh.trbox.ui.auth.LoginActivity;
 import com.mosh.trbox.ui.auth.SignUpActivity;
+import com.mosh.trbox.ui.main.MainActivity;
 import com.mosh.trbox.ui.splash.SplashActivity;
 
 import dagger.Module;
@@ -29,6 +30,9 @@ public abstract class ActivityBuilderModule {
             }
     )
     abstract SignUpActivity contributeSignUp();
+
+    @ContributesAndroidInjector
+    abstract MainActivity contributeMain();
 
 
     @ContributesAndroidInjector
