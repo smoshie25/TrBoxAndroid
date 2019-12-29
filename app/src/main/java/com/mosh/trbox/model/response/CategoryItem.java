@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class CategoryItem {
 
 	@SerializedName("artists")
-	private List<ArtistsItem> artists;
+	private List<ArtistItem> artists;
 
 	@SerializedName("name")
 	private String name;
@@ -20,7 +20,7 @@ public class CategoryItem {
 	@SerializedName("id")
 	private String id;
 
-	public List<ArtistsItem> getArtists(){
+	public List<ArtistItem> getArtists(){
 		return artists;
 	}
 
