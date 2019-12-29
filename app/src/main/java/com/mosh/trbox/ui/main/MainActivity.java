@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.widget.TextView;
 
 import com.mosh.trbox.R;
@@ -41,6 +42,10 @@ public class MainActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        setSupportActionBar(binding.toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
         setupViewPager(binding.viewpager);
 
         binding.slidingTabs.setupWithViewPager(binding.viewpager);
@@ -74,6 +79,12 @@ public class MainActivity extends DaggerAppCompatActivity {
         tabThree.setText("Library");
         tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_library, 0, 0);
         binding.slidingTabs.getTabAt(2).setCustomView(tabThree);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
 }

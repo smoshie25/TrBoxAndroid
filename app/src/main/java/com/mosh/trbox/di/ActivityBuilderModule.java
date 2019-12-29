@@ -4,6 +4,9 @@ import android.app.Activity;
 
 import com.mosh.trbox.di.auth.AuthModule;
 import com.mosh.trbox.di.auth.AuthViewModelModule;
+import com.mosh.trbox.di.main.MainFragmentBuilderModule;
+import com.mosh.trbox.di.main.MainModule;
+import com.mosh.trbox.di.main.MainViewModelModule;
 import com.mosh.trbox.ui.auth.LoginActivity;
 import com.mosh.trbox.ui.auth.SignUpActivity;
 import com.mosh.trbox.ui.main.MainActivity;
@@ -31,7 +34,13 @@ public abstract class ActivityBuilderModule {
     )
     abstract SignUpActivity contributeSignUp();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(
+            modules = {
+                    MainFragmentBuilderModule.class,
+                    MainModule.class,
+                    MainViewModelModule.class
+            }
+    )
     abstract MainActivity contributeMain();
 
 

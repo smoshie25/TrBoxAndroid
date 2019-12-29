@@ -7,6 +7,18 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity"
         android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            >
+
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/sliding_tabs"
@@ -17,6 +29,7 @@
             app:tabMode="fixed" />
 
         <androidx.viewpager.widget.ViewPager
+            android:padding="15dp"
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
