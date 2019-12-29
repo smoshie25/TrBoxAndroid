@@ -37,6 +37,10 @@ public class MusicFragment extends DaggerFragment {
 
     @Inject
     MainViewModel viewModel;
+
+    List<FeedCategory> categoryList = new ArrayList<>();
+    private MusicRecyclerViewAdapter adapter;
+
     public MusicFragment() {
         // Required empty public constructor
     }
@@ -50,17 +54,81 @@ public class MusicFragment extends DaggerFragment {
 
         viewModel = ViewModelProviders.of(this,providerFactory).get(MainViewModel.class);
 
-        loadCategory();
+        binding.messagesView.setVisibility(View.GONE);
+        binding.shimmerViewContainer.startShimmerAnimation();
+
+        adapter =  new MusicRecyclerViewAdapter(categoryList);
+        binding.messagesView.setAdapter(adapter);
+        loadSlider();
+
         return binding.getRoot();
+    }
+
+    private void loadSlider(){
+        FeedCategory feed = new FeedCategory(CategoryType.SLIDER,"SLIDER");
+
+        categoryList.add(0,feed);
+        adapter.notifyDataSetChanged();
+        loadGenre();
+
     }
 
     private void loadCategory() {
         viewModel.getCategory().observe(this,response -> {
             if(response.getValue()!=null){
-                List<FeedCategory> categoryList = new ArrayList<>();
-                categoryList.add(new FeedCategory(CategoryType.MENU,"Category",response.getValue()));
+                binding.messagesView.setVisibility(View.VISIBLE);
 
-                binding.messagesView.setAdapter(new MusicRecyclerViewAdapter(categoryList));
+                binding.shimmerViewContainer.stopShimmerAnimation();
+                binding.shimmerViewContainer.setVisibility(View.GONE);
+
+                FeedCategory feed = new FeedCategory(CategoryType.MENU,"Category");
+                feed.setCategoryItems(response.getValue());
+                categoryList.add(feed);
+
+                adapter.notifyDataSetChanged();
+                loadSongs2();
+            }
+        });
+    }
+
+    private void loadSongs() {
+        viewModel.getSongs().observe(this,response -> {
+            if(response.getValue()!=null){
+
+                FeedCategory feed = new FeedCategory(CategoryType.SONG, "Popular");
+                feed.setSongItems(response.getValue());
+                categoryList.add(feed);
+
+                adapter.notifyDataSetChanged();
+                loadCategory();
+            }
+        });
+    }
+
+    private void loadSongs2() {
+        viewModel.getSongs().observe(this,response -> {
+            if(response.getValue()!=null){
+
+                FeedCategory feed = new FeedCategory(CategoryType.SONG, "New release");
+                feed.setSongItems(response.getValue());
+                categoryList.add(feed);
+
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void loadGenre() {
+        viewModel.getGenre().observe(this,response -> {
+            if(response.getValue()!=null){
+
+                FeedCategory feed = new FeedCategory(CategoryType.GENRE, "Brows by Genre");
+                feed.setCategoryItems(response.getValue());
+                categoryList.add(feed);
+
+                adapter.notifyDataSetChanged();
+
+                loadSongs();
             }
         });
     }

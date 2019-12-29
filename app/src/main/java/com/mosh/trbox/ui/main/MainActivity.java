@@ -1,24 +1,22 @@
 package com.mosh.trbox.ui.main;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.mosh.trbox.R;
 import com.mosh.trbox.databinding.ActivityMainBinding;
-import com.mosh.trbox.ui.auth.AuthViewModel;
 import com.mosh.trbox.ui.main.booking.BookingFragment;
 import com.mosh.trbox.ui.main.library.LibFragment;
 import com.mosh.trbox.ui.main.music.MusicFragment;
 import com.mosh.trbox.util.AppCoordinator;
 import com.mosh.trbox.util.HelperRegistry;
 import com.mosh.trbox.util.Pref;
-import com.mosh.trbox.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
@@ -87,4 +85,13 @@ public class MainActivity extends DaggerAppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id== R.id.action_logout){
+            pref.saveUser(this,null);
+            coordinator.launchLoginActivity(this);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

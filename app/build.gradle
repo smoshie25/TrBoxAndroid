@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.mosh.trbox"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -74,4 +74,7 @@ dependencies {
 
     implementation 'com.github.denzcoskun:ImageSlideshow:0.0.6'
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 }
