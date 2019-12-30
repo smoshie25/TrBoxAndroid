@@ -1,9 +1,10 @@
 package com.mosh.trbox.model.response;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ArtistItem {
+public class ArtistItem implements Serializable {
 
 	@SerializedName("image")
 	private String image;
@@ -12,7 +13,7 @@ public class ArtistItem {
 	private String phone;
 
 	@SerializedName("songs")
-	private List<Object> songs;
+	private List<SongItem> songs;
 
 	@SerializedName("profile")
 	private String profile;
@@ -37,7 +38,7 @@ public class ArtistItem {
 		return phone;
 	}
 
-	public List<Object> getSongs(){
+	public List<SongItem> getSongs(){
 		return songs;
 	}
 

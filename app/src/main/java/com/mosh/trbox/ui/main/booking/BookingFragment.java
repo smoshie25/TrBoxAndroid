@@ -19,6 +19,7 @@ import com.mosh.trbox.model.CategoryType;
 import com.mosh.trbox.model.FeedCategory;
 import com.mosh.trbox.model.response.CategoryItem;
 import com.mosh.trbox.ui.main.MainViewModel;
+import com.mosh.trbox.util.AppCoordinator;
 import com.mosh.trbox.viewmodels.ViewModelProviderFactory;
 
 import java.util.ArrayList;
@@ -38,6 +39,9 @@ public class BookingFragment extends DaggerFragment {
 
     @Inject
     MainViewModel viewModel;
+
+    @Inject
+    AppCoordinator coordinator;
 
     private BookingRecyclerViewAdapter adapter;
 
@@ -59,7 +63,7 @@ public class BookingFragment extends DaggerFragment {
         binding.messagesView.setVisibility(View.GONE);
         binding.shimmerViewContainer.startShimmerAnimation();
 
-        adapter = new BookingRecyclerViewAdapter(bookingCategoryList);
+        adapter = new BookingRecyclerViewAdapter(bookingCategoryList,getContext(),coordinator);
         binding.messagesView.setAdapter(adapter);
 
         loadSlider();
