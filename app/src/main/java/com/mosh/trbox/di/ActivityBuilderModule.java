@@ -10,6 +10,7 @@ import com.mosh.trbox.di.main.MainViewModelModule;
 import com.mosh.trbox.ui.auth.LoginActivity;
 import com.mosh.trbox.ui.auth.SignUpActivity;
 import com.mosh.trbox.ui.main.MainActivity;
+import com.mosh.trbox.ui.main.booking.ArtistActivity;
 import com.mosh.trbox.ui.splash.SplashActivity;
 
 import dagger.Module;
@@ -43,6 +44,9 @@ public abstract class ActivityBuilderModule {
     )
     abstract MainActivity contributeMain();
 
+
+    @ContributesAndroidInjector
+    abstract ArtistActivity contributeArtist();
 
     @ContributesAndroidInjector
     abstract SplashActivity contributeSplash();

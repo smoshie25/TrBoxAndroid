@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.mosh.trbox.model.response.ArtistItem;
 import com.mosh.trbox.ui.auth.LoginActivity;
 import com.mosh.trbox.ui.auth.SignUpActivity;
 import com.mosh.trbox.ui.main.MainActivity;
+import com.mosh.trbox.ui.main.booking.ArtistActivity;
 
 import javax.inject.Inject;
 
@@ -49,5 +51,13 @@ public class AppCoordinator {
 //        Intent intent = new Intent(context, .class);
 //        context.startActivity(intent);
     }
+
+
+    public void launchArtistActivity(Context context, ArtistItem item){
+        Intent intent = new Intent(context, ArtistActivity.class);
+        intent.putExtra("ITEM",item);
+        context.startActivity(intent);
+    }
+
 
 }

@@ -18,10 +18,12 @@ import java.util.List;
 public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecyclerViewAdapter.ViewHolder> {
 
     private final List<ArtistItem> items;
+    private ArtistClickListener listener;
 
 
-    public ArtistRecyclerViewAdapter(List<ArtistItem> items) {
+    public ArtistRecyclerViewAdapter(List<ArtistItem> items, ArtistClickListener listener) {
         this.items = items;
+        this.listener = listener;
     }
 
     @Override
@@ -39,6 +41,9 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
 
         Picasso.get().load(holder.item.getImage()).into(holder.binding.image);
 
+        holder.binding.iconCard.setOnClickListener(view -> {
+            listener.onArtistClick(holder.item);
+        });
     }
 
 
