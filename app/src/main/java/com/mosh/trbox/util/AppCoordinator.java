@@ -45,5 +45,9 @@ public class AppCoordinator {
         context.startActivity(intent);
     }
 
+    public void launchNowPlayingScreen(Context context){
+//        Intent intent = new Intent(context, .class);
+//        context.startActivity(intent);
+    }
 
 }

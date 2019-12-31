@@ -122,7 +122,7 @@ public class MusicFragment extends DaggerFragment {
         viewModel.getGenre().observe(this,response -> {
             if(response.getValue()!=null){
 
-                FeedCategory feed = new FeedCategory(CategoryType.GENRE, "Brows by Genre");
+                FeedCategory feed = new FeedCategory(CategoryType.GENRE, "Browse by Genre");
                 feed.setCategoryItems(response.getValue());
                 categoryList.add(feed);
 
