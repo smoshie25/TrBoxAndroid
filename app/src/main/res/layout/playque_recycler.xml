@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:id="@+id/tim3_rec_layout"
+  android:visibility="gone"
+  android:layout_height="match_parent">
+
+  <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/queue_recyclerview3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/headerView"
+    android:clipToPadding="false"
+    android:paddingTop="18dp" />
+</LinearLayout>

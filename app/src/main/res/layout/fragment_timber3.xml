@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/album_art_blurred"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="#60000000"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="top"
+            android:layout_marginTop="20dp"
+            android:background="@color/transparent"
+         >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:id="@+id/lyrics_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/play_que"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="center"
+                    android:tint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/play_que"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/playlist_icon"
+                    android:tint="@color/white" />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <include layout="@layout/playque_recycler" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/perc_tim3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:id="@+id/headerView"
+                android:layout_width="match_parent"
+                app:layout_heightPercent="55%">
+
+                <ImageView
+                    android:id="@+id/album_art"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="visible" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#22000000"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/lyrics_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/mainControllerContainer"
+                    android:layout_below="@+id/smallPlayer_AB"
+                    android:background="#00000000"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:id="@+id/lyrics_loading_indicator"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_above="@+id/lyrics_status_text"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"
+                        app:indicatorName="BallPulseSyncIndicator" />
+
+                    <TextView
+                        android:id="@+id/lyrics_status_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <ScrollView
+                        android:id="@+id/lyrics_content_scroll_wrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/lyrics_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lineSpacingExtra="10dp"
+                            android:padding="10dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </ScrollView>
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/detailView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/headerView"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/song_title"
+                            style="@style/TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:scrollHorizontally="true"
+                            android:maxLines="1"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:id="@+id/song_artist"
+                            style="@style/TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:scrollHorizontally="true"
+                            android:maxLines="1"
+                            android:paddingTop="3dp"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <com.mosh.trbox.util.MediaSeekBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:maxHeight="2dp"
+                    android:paddingTop="10dp"
+                    android:tag="tint_accent_color"
+                    android:id="@+id/song_progress"/>
+                <!--<SeekBar-->
+                    <!--android:id="@+id/song_progress"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:maxHeight="2dp"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:progress="30"-->
+                    <!--android:tag="tint_accent_color" />-->
+
+
+                <TextView
+                    android:id="@+id/song_album"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/song_elapsed_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:paddingLeft="25dp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/song_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="25dp"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp">
+
+
+                    <ImageView
+                        android:id="@+id/repeat"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.6"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:scaleType="center" />
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/previous"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="0.6"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:scaleType="center"
+                        app:materialIcon="skip_previous"
+                        app:materialIconColor="#ffffff"
+                        app:materialIconSize="35dp" />
+
+                    <FrameLayout
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1">
+
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/playpausefloating"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:scaleType="fitCenter"
+                            app:backgroundTint="@android:color/white" />
+                    </FrameLayout>
+
+                    <net.steamcrafted.materialiconlib.MaterialIconView
+                        android:id="@+id/next"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="0.6"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:scaleType="center"
+                        app:materialIcon="skip_next"
+                        app:materialIconColor="#ffffff"
+                        app:materialIconSize="35dp" />
+
+                    <ImageView
+                        android:id="@+id/shuffle"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.6"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:scaleType="center" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

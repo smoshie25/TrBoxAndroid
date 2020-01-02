@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.mosh.trbox.model.response.ArtistItem;
+import com.mosh.trbox.ui.auth.HomeUserLoginActivity;
 import com.mosh.trbox.ui.auth.LoginActivity;
 import com.mosh.trbox.ui.auth.SignUpActivity;
 import com.mosh.trbox.ui.main.MainActivity;
 import com.mosh.trbox.ui.main.booking.ArtistActivity;
+import com.mosh.trbox.ui.musicPlaying.NowPlayingActivity;
 
 import javax.inject.Inject;
 
@@ -29,7 +31,7 @@ public class AppCoordinator {
     }
 
     public void launchLoginActivity(Context context){
-        Intent intent = new Intent(context, LoginActivity.class);
+        Intent intent = new Intent(context, HomeUserLoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
@@ -48,13 +50,20 @@ public class AppCoordinator {
     }
 
     public void launchNowPlayingScreen(Context context){
-//        Intent intent = new Intent(context, .class);
-//        context.startActivity(intent);
+        Intent intent = new Intent(context, NowPlayingActivity.class);
+        context.startActivity(intent);
     }
 
 
     public void launchArtistActivity(Context context, ArtistItem item){
         Intent intent = new Intent(context, ArtistActivity.class);
+        intent.putExtra("ITEM",item);
+        context.startActivity(intent);
+    }
+
+    public void gotoArtistBookingDetails (Context context, ArtistItem item ) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setAction(Constants.NAVIGATE_ARTIST_BOOKING_DETAILS);
         intent.putExtra("ITEM",item);
         context.startActivity(intent);
     }

@@ -10,14 +10,15 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 import com.mosh.trbox.R;
 import com.mosh.trbox.databinding.ActivityMainBinding;
+import com.mosh.trbox.model.response.ArtistItem;
+import com.mosh.trbox.ui.BaseActivity;
+import com.mosh.trbox.ui.main.booking.ArtistBookingDetailsFragment;
 import com.mosh.trbox.ui.main.booking.BookingFragment;
 import com.mosh.trbox.ui.main.library.LibFragment;
 import com.mosh.trbox.ui.main.music.MusicFragment;
@@ -32,9 +33,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import dagger.android.support.DaggerAppCompatActivity;
-
-public class MainActivity extends DaggerAppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
     @Inject
@@ -61,6 +60,15 @@ public class MainActivity extends DaggerAppCompatActivity {
         }
     };
 
+    private Runnable navigateArtistBookingDetail = new Runnable() {
+        public void run() {
+            ArtistItem artistItem = (ArtistItem) getIntent().getExtras().getSerializable("ITEM");
+            Fragment fragment =  ArtistBookingDetailsFragment.newInstance(artistItem);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment).commit();
+
+        }
+    };
 
 
     @Override
@@ -69,14 +77,8 @@ public class MainActivity extends DaggerAppCompatActivity {
         action = getIntent().getAction();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         navigationMap.put(Constants.NAVIGATE_LIBRARY, navigateLibrary);
-//        setSupportActionBar(binding.toolbar);
-//        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle("");
-//
-//        setupViewPager(binding.viewpager);
-//
-//        binding.slidingTabs.setupWithViewPager(binding.viewpager);
-//        createTabIcons();
+        navigationMap.put(Constants.NAVIGATE_ARTIST_BOOKING_DETAILS, navigateArtistBookingDetail);
+        View header = binding.navView.inflateHeaderView(R.layout.nav_header_main);
         navDrawerRunnable.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -220,7 +222,7 @@ public class MainActivity extends DaggerAppCompatActivity {
 
     private boolean isNavigatingMain() {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        return (currentFragment instanceof MainFragment);
+        return (currentFragment instanceof MainFragment || currentFragment instanceof ArtistBookingDetailsFragment);
     }
 
     private void addBackstackListener() {

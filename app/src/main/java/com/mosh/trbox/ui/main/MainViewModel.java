@@ -11,6 +11,9 @@ import com.mosh.trbox.model.response.CategoryResponse;
 import com.mosh.trbox.model.response.GenreResponse;
 import com.mosh.trbox.model.response.LoginResponse;
 import com.mosh.trbox.model.response.SongResponse;
+import com.mosh.trbox.model.response.artistdetails.ArtistDetailResponse;
+import com.mosh.trbox.model.response.artistdetails.VideoArtistResponse;
+import com.mosh.trbox.util.Constants;
 
 import org.json.JSONObject;
 
@@ -131,6 +134,70 @@ public class MainViewModel extends ViewModel {
         call.enqueue(new Callback<ArtistResponse>() {
             @Override
             public void onResponse(Call<ArtistResponse> call, Response<ArtistResponse> response) {
+                try {
+
+                    if(response.isSuccessful())
+                        responseApi.setValue(response.body());
+                    else{
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        //responseApi.setValue(new LoginResponse(jObjError.getString("error_description")));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                    //responseApi.setValue(new LoginResponse(SYSTEM_ERROR));
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                //responseApi.setValue(new LoginResponse(NETWORK_ERROR ));
+            }
+        });
+
+        return responseApi;
+    }
+
+    public LiveData<ArtistDetailResponse> getArtistBookingSong(int page, String id) {
+        String url = Constants.BASE_URL + "artist/" + id + "?limit=20&"+"offset="+page;
+        final MutableLiveData<ArtistDetailResponse> responseApi = new MutableLiveData<>();
+        Call call = mainApi.getArtistBookingDetailsSong(url);
+        call.enqueue(new Callback<ArtistDetailResponse>() {
+            @Override
+            public void onResponse(Call<ArtistDetailResponse> call, Response<ArtistDetailResponse> response) {
+                try {
+
+                    if(response.isSuccessful())
+                        responseApi.setValue(response.body());
+                    else{
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        //responseApi.setValue(new LoginResponse(jObjError.getString("error_description")));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                    //responseApi.setValue(new LoginResponse(SYSTEM_ERROR));
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                //responseApi.setValue(new LoginResponse(NETWORK_ERROR ));
+            }
+        });
+
+        return responseApi;
+    }
+
+    public LiveData<VideoArtistResponse> fetchVideoOfArtistBooking(int page, String id) {
+        String url =  Constants.BASE_URL+ "video/" + id ;
+        final MutableLiveData<VideoArtistResponse> responseApi = new MutableLiveData<>();
+        Call call = mainApi.getArtistVideo(url);
+        call.enqueue(new Callback<VideoArtistResponse>() {
+            @Override
+            public void onResponse(Call<VideoArtistResponse> call, Response<VideoArtistResponse> response) {
                 try {
 
                     if(response.isSuccessful())

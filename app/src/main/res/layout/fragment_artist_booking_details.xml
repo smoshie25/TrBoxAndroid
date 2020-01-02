@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_main"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!--      <androidx.core.widget.NestedScrollView-->
+        <!--          android:layout_width="match_parent"-->
+        <!--          android:layout_height="match_parent">-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@id/app_bar"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/artist_image"
+                    android:layout_width="100dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="100dp" />
+
+                <TextView
+                    android:id="@+id/txt1"
+                    android:layout_width="match_parent"
+                    android:text="@string/artiste"
+                    android:textColor="@color/artistdetail_title_color"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/artist_image"
+                    android:layout_marginStart="8dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txt_artiste_name"
+                    android:layout_width="match_parent"
+                    android:text="Gideon Oyediran"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@id/artist_image"
+                    android:layout_marginStart="8dp"
+                    android:layout_below="@id/txt1"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="match_parent"
+                    android:text="Profile"
+                    android:textColor="@color/artistdetail_title_color"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/artist_image"
+                    android:layout_marginStart="8dp"
+                    android:layout_below="@id/txt_artiste_name"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txt_artiste_profile"
+                    android:layout_width="match_parent"
+                    android:text="Gideon Oyediran is a big man ijn it and i am so weakthy"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_toRightOf="@id/artist_image"
+                    android:layout_marginStart="8dp"
+                    android:layout_below="@id/txt2"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="4"
+                android:orientation="horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_call"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_call"
+                        android:layout_height="60dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Call"
+                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_chat"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_chat"
+                        android:layout_gravity="center"
+                        android:layout_height="60dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Chat"
+                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_video"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_video"
+                        android:layout_height="60dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Video"
+                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_song"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_song"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:layout_height="60dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Songs"
+                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <FrameLayout
+                android:id="@+id/child_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+<!--        <FrameLayout-->
+<!--            android:id="@+id/bottom_media_controller"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true">-->
+<!--        </FrameLayout>-->
+
+
+
+
+
+    </RelativeLayout>
+</layout>

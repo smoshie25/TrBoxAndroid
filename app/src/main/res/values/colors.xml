@@ -4,4 +4,17 @@
     <color name="colorPrimaryDark">#010E52</color>
     <color name="colorAccent">#056e92</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="main_background">#f6f5f4</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="red">#EF5350</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="indigo_900">#040941</color>
+
+    <color name="grey">#b2b2b2</color>
+    <color name="lightGrey">#e2e2e2</color>
+    <color name="green">#1db954</color>
+    <color name="black">#000000</color>
+    <color name="notification_bg">#e91e63</color>
+    <color name="artistdetail_title_color">#25889B</color>
 </resources>

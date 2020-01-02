@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">TrBox</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -12,6 +12,31 @@
     <string name="error_re_password">Password do not match</string>
     <string name="error_invalid_email">This email address is invalid</string>
 
+
+    <!-- Broadcast Receivers -->
+    <string name="broadcast_seekbar_update">broadcast_seekbar_update</string>
+    <string name="broadcast_seekbar_value">broadcast_seekbar_value</string>
+    <string name="broadcast_update_ui">broadcast_update_ui</string>
+    <string name="broadcast_new_media_id">broadcast_new_media_id</string>
+
+    <string name="string_remove_from_playlist">Remove from playlist?</string>
+    <string name="string_yes">yes</string>
+    <string name="string_no">no</string>
+    <string name="label_stop">Stop</string>
+    <string name="label_pause">Pause</string>
+    <string name="label_play">Play</string>
+    <string name="label_play_pause">Play and pause toggle</string>
+    <string name="label_previous">Previous track</string>
+    <string name="label_next">Next track</string>
+
+
+    <!--do not translate these strings-->
+    <string name="combine_two_strings" translatable="false">%1$s | %2$s</string>
+    <string name="duration_format" translatable="false"><xliff:g id="hours">%1$s</xliff:g> <xliff:g id="minutes">%2$s</xliff:g></string>
+    <string name="durationformatshort" translatable="false"><xliff:g id="format">%2$d:%3$02d</xliff:g></string>
+    <string name="durationformatlong" translatable="false"><xliff:g id="format">%1$d:%2$02d:%3$02d</xliff:g></string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="artiste">Artiste</string>
 </resources>

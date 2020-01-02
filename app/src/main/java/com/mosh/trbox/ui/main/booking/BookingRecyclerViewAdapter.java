@@ -84,7 +84,7 @@ public class BookingRecyclerViewAdapter extends RecyclerView.Adapter<BookingRecy
 
     @Override
     public void onArtistClick(ArtistItem item) {
-        coordinator.launchArtistActivity(context,item);
+        coordinator.gotoArtistBookingDetails(context,item);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

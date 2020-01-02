@@ -2,14 +2,12 @@ package com.mosh.trbox.ui.musicPlaying;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.media.MediaMetadataCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,18 +28,10 @@ public class MediaControllerFragment extends Fragment implements
     private static final String TAG = "MediaControllerFragment";
 
 
-    // UI Components
-    private TextView mSongTitle,mSongArtist;
-    private ImageView mPlayPause;
-    private MediaSeekBar mSeekBarAudio;
-
-
     // Vars
     private IMainActivity mIMainActivity;
     private MediaMetadataCompat mSelectedMedia;
     private boolean mIsPlaying;
-    private ImageView mSongImage;
-    private LinearLayout linearLayout;
     private FragmentMediaControllerBinding binding;
 
 
@@ -54,25 +44,18 @@ public class MediaControllerFragment extends Fragment implements
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_booking, container, false);
-
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_media_controller, container, false);
         return binding.getRoot();
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        mSongTitle = view.findViewById(R.id.media_song_title);
-        mSongArtist = view.findViewById(R.id.media_song_artist);
-        mPlayPause = view.findViewById(R.id.play_pause);
-        mSongImage = view.findViewById(R.id.img_artist);
-        mSeekBarAudio = view.findViewById(R.id.seekbar_audio);
-        linearLayout = view.findViewById(R.id.view_quick);
         binding.viewQuick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//               Intent intent = new Intent(getActivity(), NowPlayingTestActivity.class);
-//                startActivity(intent);
+               Intent intent = new Intent(getActivity(), NowPlayingActivity.class);
+                startActivity(intent);
             }
         });
         binding.playPause.setOnClickListener(this);

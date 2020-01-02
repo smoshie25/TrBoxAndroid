@@ -32,4 +32,5 @@ public class Constants {
     public static final String TIMBER4 = "timber4";
     public static final String TIMBER5 = "timber5";
     public static final String TIMBER6 = "timber6";
+    public static final String NAVIGATE_ARTIST_BOOKING_DETAILS = "NAVIGATE_ARTIST_BOOKING_DETAILS";
 }
